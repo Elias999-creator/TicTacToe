@@ -9,15 +9,10 @@ public class GameController : MonoBehaviour
 
     private string playerSide;
 
-    public GameObject gameOverPanel;
-
-    public Text gameOverText;
-
     void Awake ()
     {
         SetGameControllerRefernceOnButtons();
         playerSide = "X";
-        gameOverPanel.SetActive(false);
     }
 
     void SetGameControllerRefernceOnButtons ()
@@ -90,7 +85,5 @@ public class GameController : MonoBehaviour
         {
             buttonList[i].GetComponentInParent<Button>().interactable = false;
         }
-        gameOverPanel.SetActive(true);
-        gameOverText.text = playerSide + " Wins!";
     }
 }
