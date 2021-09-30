@@ -293,6 +293,8 @@ MonoBehaviour:
   - {fileID: 1299162792}
   - {fileID: 1995038495}
   - {fileID: 1304073096}
+  gameOverPanel: {fileID: 2143457137}
+  gameOverText: {fileID: 469424285}
 --- !u!1001 &120411627
 PrefabInstance:
   m_ObjectHideFlags: 0
