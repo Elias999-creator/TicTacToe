@@ -7,6 +7,7 @@ using UnityEngine.UI;
 {
     public Image panel;
     public Text text;
+    public Button button;
 }
 
 [System.Serializable] public class PlayerColor
@@ -25,6 +26,7 @@ public class GameController : MonoBehaviour
     public Player playerO;
     public PlayerColor activePlayerColor;
     public PlayerColor inactivePlayerColor;
+    public GameObject startInfo;
 
     private string playerSide;
     private int moveCount;
@@ -32,11 +34,9 @@ public class GameController : MonoBehaviour
     void Awake ()
     {
         SetGameControllerRefernceOnButtons();
-        playerSide = "X";
         gameOverPanel.SetActive(false);
         moveCount = 0;
         restartButton.SetActive(false);
-        SetPlayerColors(playerX, playerO);
     }
 
     void SetGameControllerRefernceOnButtons ()
@@ -45,6 +45,29 @@ public class GameController : MonoBehaviour
         {
            buttonList[i].GetComponentInParent<GridSpace>().SetGameControllerReference(this);
         }
+    }
+
+
+    public void SetStartingSide(string startingSide)
+    {
+        playerSide = startingSide;
+        if (playerSide == "X")
+        {
+            SetPlayerColors(playerX, playerO);
+        }
+        else
+        {
+            SetPlayerColors(playerO, playerX);
+        }
+
+        StartGame();
+    }
+
+    void StartGame()
+    {
+        SetBoardInteractable(true);
+        SetPlayerButtons(false);
+        startInfo.SetActive(false);
     }
 
     public string GetPlayerSide()
@@ -148,12 +171,12 @@ public class GameController : MonoBehaviour
 
     public void RestartGame ()
     {
-        playerSide = "X";
         moveCount = 0;
         gameOverPanel.SetActive(false);
         restartButton.SetActive(false);
-        SetPlayerColors(playerX, playerO);
+        SetPlayerButtons(true);
         SetBoardInteractable(true);
+        startInfo.SetActive(true);
 
         for (int i = 0; i < buttonList.Length; i++)
         {
@@ -167,5 +190,19 @@ public class GameController : MonoBehaviour
         {
             buttonList[i].GetComponentInParent<Button>().interactable = toggle;
         }
+    }
+
+    void SetPlayerButtons (bool toggle)
+    {
+        playerX.button.interactable = toggle;
+        playerO.button.interactable = toggle;
+    }
+
+    void SetPlayerColorsInactive()
+    {
+        playerX.panel.color = inactivePlayerColor.panelColor;
+        playerX.text.color = inactivePlayerColor.textColor;
+        playerO.panel.color = inactivePlayerColor.panelColor;
+        playerO.text.color = inactivePlayerColor.textColor;
     }
 }
