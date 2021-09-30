@@ -6,18 +6,18 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public Text[] buttonList;
+    public GameObject gameOverPanel;
+    public Text gameOverText;
 
     private string playerSide;
-
-    public GameObject gameOverPanel;
-
-    public Text gameOverText;
+    private int moveCount;
 
     void Awake ()
     {
         SetGameControllerRefernceOnButtons();
         playerSide = "X";
         gameOverPanel.SetActive(false);
+        moveCount = 0;
     }
 
     void SetGameControllerRefernceOnButtons ()
@@ -75,6 +75,11 @@ public class GameController : MonoBehaviour
             GameOver();
         }
 
+        if (moveCount >= 9)
+        {
+            SetGameOverText("It's a draw!");
+        }
+
         ChangeSides();
 
     }
@@ -92,5 +97,11 @@ public class GameController : MonoBehaviour
         }
         gameOverPanel.SetActive(true);
         gameOverText.text = playerSide + " Wins!";
+    }
+
+    void SetGameOverText (string value)
+    {
+        gameOverPanel.SetActive(true);
+        gameOverText.text = value;
     }
 }
