@@ -65,7 +65,6 @@ public class GameController : MonoBehaviour
 
     void StartGame()
     {
-        SetBoardInteractable(true);
         SetPlayerButtons(false);
         startInfo.SetActive(false);
     }
@@ -184,7 +183,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void SetBoardInteractable (bool toggle)
+    public void SetBoardInteractable (bool toggle)
     {
         for (int i = 0; i < buttonList.Length; i++)
         {
