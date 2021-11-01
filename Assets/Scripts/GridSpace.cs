@@ -5,8 +5,21 @@ using UnityEngine.UI;
 
 public class GridSpace : MonoBehaviour
 {
+    public enum GridSpaces {
+        TopLeft,
+        TopCentre,
+        TopRight,
+        MiddleLeft,
+        MiddleCentre,
+        MiddleRight,
+        BottomLeft,
+        BottomCentre,
+        BottomRight
+    }
+
     public Button button;
     public Text buttonText;
+    public GridSpaces gridSpace;
 
     private GameController gameController;
 
