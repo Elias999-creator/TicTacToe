@@ -10,8 +10,8 @@ public class Deck : MonoBehaviour
 
     public void Start()
     {
-        cards.Add(new Card("Place X", "Places X on the square", new PlaceXEffect()));
-        cards.Add(new Card("Place X in corner", "Places X in the corner", new PlaceInCorner()));
+        cards.Add(new Card("Take square", "Takes a specific square", new PlaceXEffect()));
+        cards.Add(new Card("Take squares in corner", "Takes all the squares in a corner", new PlaceInCorner()));
     }
 
     public void PickCard()
