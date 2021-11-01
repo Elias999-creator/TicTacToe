@@ -20,7 +20,7 @@ public class CardSlot : MonoBehaviour
 
     public void onClick()
     {
-        gameController.SetBoardInteractable(true);
+        gameController.setActiveCard(card);
         removeCard();
     }
 

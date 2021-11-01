@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static GridSpace;
 
 public class PlaceXEffect : Effect
 {
-    public void runEffect()
+    public bool runEffect(GridSpace gridSpace, string playerSide, Text[] buttonList)
     {
-        Debug.Log("I AM PLACING X BRO");
+        gridSpace.buttonText.text = playerSide;
+        gridSpace.button.interactable = false;
+        return true;
     }
 }
